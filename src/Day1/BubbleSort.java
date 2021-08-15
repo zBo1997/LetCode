@@ -4,7 +4,8 @@ import java.util.Arrays;
 
 /**
  * @Classname BubbleSort
- * @Description 冒泡排序
+ * @Description 冒泡排序 O(n^2)
+ * 缺点：大量的浪费比较行为
  * @Date 2021/8/12 16:53
  * @Created by ZhuBo
  */

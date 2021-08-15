@@ -2,7 +2,7 @@ package Day1;
 
 /**
  * @Classname InsertionSort
- * @Description 选择排序
+ * @Description 选择排序 O(n^2)
  * @Date 2021/8/12 17:09
  * @Created by ZhuBo
  */
