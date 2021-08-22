@@ -35,7 +35,7 @@ public class LandFlagsQuestions {
         int less = L - 1;//小范围区域
         int more = R;//较大范围区域
         int cur = L;//游标指针
-        while (cur < more) {//当游标追赶到最大区域的的范围，循环也就结束了，标识已经已经没有最大何最小的范围
+        while (cur < more) {//当游标追赶到最大区-域的的范围，循环也就结束了，标识已经已经没有最大何最小的范围
             if (arr[cur] == arr[R]) {
                 cur++;
             } else if (arr[cur] < arr[R]) {
