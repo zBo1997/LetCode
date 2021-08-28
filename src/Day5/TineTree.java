@@ -1,7 +1,5 @@
 package Day5;
 
-import java.util.concurrent.Callable;
-
 /**
  * @Classname HeapSort
  * @Description 前缀数
@@ -114,5 +112,7 @@ public class TineTree {
         trie1.insert("c");
         trie1.delete("bc");
         System.out.println(trie1.search("bc"));
+
+        System.out.println((int)'你');
     }
 }
