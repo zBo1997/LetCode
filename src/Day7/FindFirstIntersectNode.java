@@ -2,6 +2,8 @@ package Day7;
 
 /**
  * @Classname FindFirstIntersectNode
+ * 两个链表，可能有环，可能无环；可能相交，
+ * 可能不相交；若相交，返回相交的第一个节点，若不相交，返回null。
  * @Description Floyd 判圈算法实现
  * @Date 2021/8/28 16:58
  * @Created by ZhuBo
@@ -21,7 +23,6 @@ public class FindFirstIntersectNode {
     }
 
     /**
-     * todo 主方法没写
      * @param head1
      * @param head2
      * @return
@@ -30,13 +31,23 @@ public class FindFirstIntersectNode {
         if (head1 == null || head2 == null) {
             return null;
         }
-        return null;
+        Node loopNode1 = getLoopNode(head1);
+        Node loopNode2 = getLoopNode(head2);
+        if (loopNode1 != null && loopNode2 != null) {
+            return bothLoop(head1, loopNode1, head2, loopNode2);
+        } else if (loopNode1 == null && loopNode2 == null) {
+            return noLoop(head1, head2);
+        } else {
+            return null;
+        }
+
     }
 
     /**
      * 此处的寻找环的起始节点，用的是Floyd判圈算法（Floyd Cycle Detection Algorithm）
      * https://blog.csdn.net/SSHH_ZHU/article/details/119971535?spm=1001.2014.3001.5502
      * 上面的博客详细解释此算法的证明
+     *
      * @param head
      * @return
      */
@@ -55,7 +66,7 @@ public class FindFirstIntersectNode {
             }
         }
         fast = head;//让快指针重新回到头节点,依次往下走 ，当发现内村地址相等的节点，证明找到了环的起始节点
-        while(slow != fast){
+        while (slow != fast) {
             slow = slow.next;
             fast = fast.next;
         }
