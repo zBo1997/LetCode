@@ -84,7 +84,7 @@ public class MyHeap {
          * @param heapSize 堆的大小
          */
         private void heapify(int[] arr, int index, int heapSize) {
-            int left = index * 2 + 1; //当前孩子的最孩子
+            int left = index * 2 + 1; //当前孩子的左孩子
             while(left < heapSize){//循环条件是，当前左孩子小于堆的大小
                 //遍历heapSize大小范围内这个位置的取较大的的数
                 //条件： 如果这个值有右孩子，并且这个右孩子的值 大于这个左孩子的值，
@@ -96,5 +96,6 @@ public class MyHeap {
             }
         }
     }
+
 
 }
