@@ -16,7 +16,7 @@ public class SuccessOrNode {
 
         public Node right;
 
-        public Node parent;
+        public Node parent;//父节点
 
         public Node(int data) {
             this.value = data;

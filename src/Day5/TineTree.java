@@ -1,7 +1,7 @@
 package Day5;
 
 /**
- * @Classname HeapSort
+ * @Classname TineTree
  * @Description 前缀数
  * @Date 2021/8/22 14:10
  * @Created by ZhuBo
