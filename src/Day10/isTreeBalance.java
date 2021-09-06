@@ -3,6 +3,11 @@ package Day10;
 /**
  * @Classname isTreeBalance
  * @Description 使用的后序遍历
+ * 先序（1）先(根)序遍历（根左右）
+ *
+ * 中序（2）中(根)序遍历（左根右）
+ *
+ * 后序（3）后(根)序遍历（左右根）
  * @Date 2021/9/6 22:45
  * @Created by ZhuBo
  */
