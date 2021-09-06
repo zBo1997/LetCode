@@ -36,7 +36,7 @@ public class SuccessOrNode {
             return getLeftMost(node);
         } else {//当前节点没有右子树（就说明 我们寻找的后继节点 需要找父节点）
             Node parent = node.parent;//
-            //当前节点有父节点，并且当前节点不是父节点的左孩子
+            //当前节点有父节点，并且当前节点不是父节点的左孩子（那么就是他的有孩子 也可以写 parent.right == node）
             while (parent != null && parent.left != node) {
                 node = parent;//当前节点上移动
                 parent = node.parent;//当前节点的父节点
