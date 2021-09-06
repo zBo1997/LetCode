@@ -24,7 +24,7 @@ public class SuccessOrNode {
     }
 
     /**
-     * （中序遍历的前提下） 指定节点node 寻找次二叉数的 下一节 时间复杂度位 O(K) K位node的深度
+     * （中序遍历的前提下） 指定节点node 寻找次二叉数的 后续节点 时间复杂度位 O(K) K位node的深度
      * @param node
      * @return
      */
