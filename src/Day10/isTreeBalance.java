@@ -34,7 +34,8 @@ public class isTreeBalance {
         int height = Math.max(leftInfo.height, rightInfo.height) + 1;//为社么要+1 因为 我们需要加上头节点的高度
 
         boolean isBalance = false;
-        if (leftInfo.isBalance && rightInfo.isBalance && height < 2) {
+        //左边的树是 平衡的 ，右数 是平衡的  并且高度 差值没有超过1
+        if (leftInfo.isBalance && rightInfo.isBalance && Math.abs(leftInfo.height - rightInfo.height) < 2) {
             isBalance = true;
         }
         return new Info(height, isBalance);
