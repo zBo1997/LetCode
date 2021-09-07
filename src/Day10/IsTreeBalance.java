@@ -11,7 +11,7 @@ package Day10;
  * @Date 2021/9/6 22:45
  * @Created by ZhuBo
  */
-public class isTreeBalance {
+public class IsTreeBalance {
 
     static class Info {
         int height;//当前这棵树的高度
