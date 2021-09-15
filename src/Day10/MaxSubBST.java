@@ -75,7 +75,7 @@ public class MaxSubBST {
          * 2、如果右树信息为空，那么就为搜索二叉树，否则就去用这个节点的右树的信息
          * 3、如果左树信息为空，那么为搜索二叉树，就不需要判断当前左树的最大值大小
          * 4、如果右树信息为空，那么为搜索二叉树，就不需要判断当前右树的最小值大小
-         *
+         * （每次都会判断，每次每个节点的最小子树大小 ）
          * */
         if((leftInfo == null ? true : leftInfo.isAllBST)
                 && (rightInfo == null ? true : rightInfo.isAllBST)

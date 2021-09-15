@@ -96,7 +96,7 @@ public class TineTree {
                     if(node.next[path] == null){
                         return 0;
                     }
-                    node = node.next[path];//转到下一个姐弟啊
+                    node = node.next[path];//转到下一个节点啊
                 }
                 return node.end;
             }
