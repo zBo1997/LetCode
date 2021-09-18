@@ -2,7 +2,7 @@ package Day11;
 
 /**
  * @Classname MaxSubBSTHead
- * @Description 最大搜索字数的头节点是什么
+ * @Description 最大搜索子树的头节点是什么
  * @Date 2021/9/14 22:17
  * @Created by ZhuBo
  */
@@ -32,7 +32,7 @@ public class MaxSubBSTHead {
         Node right;
 
         public Node(int i) {
-
+            this.value = i;
         }
     }
 

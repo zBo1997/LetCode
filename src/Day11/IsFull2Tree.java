@@ -7,7 +7,7 @@ package Day11;
  * @Date 2021/9/14 21:32
  * @Created by ZhuBo
  */
-public class IsFill2Tree {
+public class IsFull2Tree {
 
     /**
      * Info信息
