@@ -25,7 +25,7 @@ public class COMMON_PARENT {
      * 求出此问题的相关学习
      */
     static class Info {
-        Node ans ;//两个点在这里
+        Node ans ;//两个点在这里公共节点
         boolean findO1;//当前子树是否找到o1节点
         boolean findO2;//当前子树是否找了o2节点
 
@@ -51,7 +51,7 @@ public class COMMON_PARENT {
         boolean finOd2 = x == o2 || leftInfo.findO2 || rightInfo.findO2;
 
         Node ans = null;
-        /** 无论做视还是右树，出现了共共节，那么肯定就是这个树的ans  ,若 没有公共节点，ans 始终为 null */
+        /** 无论做视还是右树，出现了共共节点，那么肯定就是这个树的ans  ,若 没有公共节点，ans 始终为 null */
         if(leftInfo.ans != null){
             ans = leftInfo.ans;
         }
