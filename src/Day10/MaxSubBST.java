@@ -34,7 +34,7 @@ public class MaxSubBST {
         Node right;
 
         public Node(int i) {
-
+            this.value = i;
         }
     }
 
@@ -91,5 +91,18 @@ public class MaxSubBST {
         }
 
         return new Info(isAllBST, maxSubBSTSize, min, max);
+    }
+
+    public static void main(String[] args) {
+        Node head = new Node(2000);
+        head.left = new Node(35);
+        head.right = new Node(200);
+        head.left.left = new Node(32);
+        head.left.right = new Node(36);
+        head.right.left = new Node(40);
+        head.right.right = new Node(201);
+        Info process = process(head);
+        System.out.println(process.maxSubBSTSize);
+
     }
 }
