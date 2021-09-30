@@ -6,7 +6,7 @@ import java.util.HashSet;
 
 /**
  * @Classname LowestLexicography
- * @Description 贪心算法 字典序排序算法
+ * @Description 字典序排序算法
  * @Date 2021/9/26 22:27
  * @Created by ZhuBo
  */
@@ -53,6 +53,11 @@ public class LowestLexicography {
         }
     }
 
+    /**
+     * 具体的执行流程
+     * @param strs 字符串数组
+     * @return
+     */
     public static String process(String[] strs) {
         if (strs.length < 0) {
             return "";
