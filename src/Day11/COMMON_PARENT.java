@@ -71,35 +71,6 @@ public class COMMON_PARENT {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      *
      * 使用一个去重的HashSet一直判断到出现包 包含这个这个节点的父节点 因为在这个Set中如果存在这么一个节点，
@@ -113,7 +84,7 @@ public class COMMON_PARENT {
         // key的父节点是value
         HashMap<Node,Node> parentMap = new HashMap<>();
         parentMap.put(head,null);//头节点的父节点是空
-        fillParentMap(head,parentMap);
+        fillParentMap(head,parentMap);//头节点存存放
         HashSet<Node> nodeSet = new HashSet<>();
         Node cur = o1;//初始化一个节点
         nodeSet.add(cur);

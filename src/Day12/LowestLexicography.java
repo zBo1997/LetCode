@@ -1,6 +1,7 @@
 package Day12;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashSet;
 
@@ -13,7 +14,7 @@ import java.util.HashSet;
 public class LowestLexicography {
 
     /**
-     * 暴力递归，字典序排序
+     * 排列组合 把字符串 实现不同的排列组合
      *
      * @param args 所有等待排序的字符串
      * @param used 已经被使用的一个“容器”，如果这个字符串已经被 used 注册过了，当前args的数据不能再使用 [这里存入的是下标]
@@ -26,7 +27,7 @@ public class LowestLexicography {
             all.add(path);
         } else {
             for (int i = 0; i < args.length; i++) {
-                if (used.contains(i)) {
+                if (!used.contains(i)) {
                     used.add(i);//这里标识一个字符分支的开始 ，每次都添加一个被注册的字符
                     process(args, used, all, path + args[i]);//每个分支的递归
                     used.remove(i);//当一字符分支的结束 ，需要把容器清空
@@ -54,11 +55,33 @@ public class LowestLexicography {
     }
 
     /**
-     * 具体的执行流程
+     * 开始拼接字符串
+     * @param args
+     * @return
+     */
+    public static String lowestString1 (String[] args){
+        if (args.length <0 || args == null){
+            return null;
+        }
+        Arrays.sort(args,new MyComparator());
+        String res = "";
+        for (int i = 0; i < args.length; i++) {
+            res += args[i];
+        }
+        return res;
+    }
+
+
+
+
+    /********************************* 简化后的代码 ***************************/
+
+    /**
+     * 具体的执行流程 简化以后的方法
      * @param strs 字符串数组
      * @return
      */
-    public static String process(String[] strs) {
+    public static String lowestString2(String[] strs) {
         if (strs.length < 0) {
             return "";
         }
