@@ -17,16 +17,35 @@ import java.util.HashSet;
 public class Light {
 
     /**
-     * 暴力灭据，列出所有的可能性 todo 还没理解 需要重新构思
+     * 暴力方法，列出所有的可能性 todo 还没理解 需要重新构
      * @param str 字符串
      * @param index 当前下标
      * @param lights 需要放入路灯的下标位置
      * @return
      */
-    public static int process(char str , int index, HashSet<Integer> lights ){
-        //字符串还没有走完的时候，我们去统计HashSet中所有所有的街灯
-
-        return 0;
+    public static int process(char[] str , int index, HashSet<Integer> lights ){
+        //字符串走完的时候，我们去统计HashSet中所有所有的街灯
+        if(index == lights.size()){
+            for (int i = 0; i < str.length; i++) {
+                if (str[i] != 'X'){
+                    if (!lights.contains( i -  1) && !lights.contains( i ) && !lights.contains( i + 1)){
+                        return Integer.MAX_VALUE;
+                    }
+                }
+            }
+            return lights.size();
+        } else {
+            //当且节点不需放灯
+            int no = process(str,index + 1,lights);
+            //当前节点需要放灯
+            int yes = Integer.MAX_VALUE;
+            if (str[index]  == '.'){//只有“.” 是可以放灯的
+                lights.add(index);
+                yes = process(str,index + 1,lights);
+                lights.remove(index);
+            }
+            return Math.min(yes,no);
+        }
     }
 
     /**
