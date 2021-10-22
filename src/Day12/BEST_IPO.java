@@ -67,7 +67,7 @@ public class BEST_IPO {
             nodeByMinCost.add(new Node(profits[i],capital[i]));//初始化结构
         }
         for (int i = 0; i < k; i++) {
-            //若干当前的所有项目不为空 并且 当先手中的钱可以 继续进行下一个利润最高的项目
+            //若干当前的所有项目不为空 并且 当前手中的钱可以 继续进行下一个利润最高的项目
             //把这个项目放入到
             while (!nodeByMinCost.isEmpty() && nodeByMinCost.peek().c < W){
                 nodeByMaxProfit.add(nodeByMinCost.poll());
