@@ -3,14 +3,23 @@ package Day11;
 /**
  * @Classname MaxSubBSTHead
  * @Description 最大搜索子树的头节点是什么
+1、最大搜索二叉子树来自左子树
+2、最大搜索二叉子树来自右子树
+3、最大搜索二叉子树是整颗树
+ 如果整棵树是搜索二叉子树，那么需要满足的条件就是
+ 1、根节点的左孩子是左最大搜索二叉树的头节点
+ 2、根节点的右孩子是右最大搜索二叉树的头节点
+ 3、在满足以上两个连个条件的前提下根节点的值比左最大搜索二叉树的头节点的值要大
+ 4、在满足以上两个连个条件的前提先根节点的值比右最大搜索二叉树的投建的的值要小
  * @Date 2021/9/14 22:17
  * @Created by ZhuBo
  */
 public class MaxSubBSTHead {
 
+
     static class Info {
 
-        public Node maxSubBSTHead;//是否是搜搜二叉树
+        public Node maxSubBSTHead;//是否含有搜索二叉树
 
         public int maxSubBSTSize;//最大子搜索二叉树的大小
 
@@ -40,7 +49,9 @@ public class MaxSubBSTHead {
         if (x == null) {
             return null;
         }
+        //递归找左子树
         Info leftInfo = process(x.left);
+        //递归找右子树
         Info rightInfo = process(x.right);
 
         int min = x.value;
