@@ -45,7 +45,7 @@ public class BEST_IPO {
         }
     }
 
-    //创建分别 根据 利润的 不同比较器 (倒序) 也就是按照利润按照大根堆拍戏
+    //创建分别 根据 利润的 不同比较器 (倒序) 也就是按照利润按照大根堆排序
     public static class MaxProfitComparator implements Comparator<Node> {
         @Override
         public int compare(Node t2, Node t1) {
@@ -70,9 +70,10 @@ public class BEST_IPO {
             //若干当前的所有项目不为空 并且 当前手中的钱可以 继续进行下一个利润最高的项目
             //把这个项目放入到
             while (!nodeByMinCost.isEmpty() && nodeByMinCost.peek().c < W){
+                //进大根堆
                 nodeByMaxProfit.add(nodeByMinCost.poll());
             }
-            //如果没有适合的最大利润的项目，那么直接返回当前利润
+            //如果没有适合的最大利润的项目，那么直接返回当前利润 并且大根堆没有项目可做
             if (nodeByMaxProfit.isEmpty()){
                 return W;
             }
@@ -80,4 +81,14 @@ public class BEST_IPO {
         }
         return W;
     }
+
+    public static void main(String[] args) {
+        int arr[] = {2,7,1,3,1,1};
+        PriorityQueue<Integer> nodeByMinCost = new PriorityQueue<Integer>();
+        for (int i = 0; i < arr.length; i++) {
+            nodeByMinCost.add(arr[i]);//初始化结构
+        }
+        nodeByMinCost.forEach(System.out::print);
+    }
+
 }

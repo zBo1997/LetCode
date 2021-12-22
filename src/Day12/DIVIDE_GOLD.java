@@ -38,8 +38,39 @@ import java.util.PriorityQueue;
  */
 public class DIVIDE_GOLD {
 
+    /**
+     * 暴力递归
+     * @param arr
+     * @param pre
+     * @return
+     */
+    public static int process(int[] arr, int pre) {
+        if (arr.length == 1) {
+            return pre;
+        }
+        int ans = Integer.MAX_VALUE;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                ans = Math.min(ans, process(copyAndMergerTwo(arr,i,j),pre + arr[i] + arr[j]));
+            }
+        }
+        return ans;
+    }
+
+    public static int[] copyAndMergerTwo(int[] arr, int i, int j) {
+        int[] ans = new int[arr.length - 1];
+        int ansi = 0;
+        for (int arri = 0; arri < arr.length; arri++) {
+            if (arri != i && arri != j){
+                ans[ansi ++] = arr[arri];
+            }
+        }
+        ans[ansi] = arr[i] + arr[j];
+        return ans;
+    }
 
     public static void main(String[] args) {
+        //堆的手法
         PriorityQueue<Integer> heap = new PriorityQueue<Integer>();
         int[] fenshu = {10, 20, 30};
         int sum = 0;
@@ -47,10 +78,13 @@ public class DIVIDE_GOLD {
             heap.add(i);
         }
         while (heap.size() > 1) {
+            //每一次弹出 两个数 和成一个树 重新放入小根堆中去
             int temp = heap.poll() + heap.poll();
             sum = sum + temp;
             heap.add(temp);
         }
         System.out.println(sum);
     }
+
+
 }
