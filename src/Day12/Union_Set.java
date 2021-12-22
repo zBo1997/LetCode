@@ -82,7 +82,7 @@ public class Union_Set {
 
         /**
          * 从cur 传入得节点开始一直寻找，直到找到代表点返回。
-         * 扁平化过程
+         * 第一个优化:扁平化过程
          * @return
          */
         public Node<V> findLastFather(Node<V> cur) {
@@ -102,7 +102,7 @@ public class Union_Set {
         }
 
         /**
-         *
+         * 小的链子 去挂大的链子，小去挂大，减少便利链的高度
          * @param a
          * @param b
          * @return
