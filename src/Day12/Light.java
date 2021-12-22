@@ -15,9 +15,20 @@ import java.util.HashSet;
  * @Created by ZhuBo
  */
 public class Light {
+    /**
+     *暴力 开始方法
+     * @param road
+     * @return
+     */
+    public static int minLight(String road){
+        if (road == null || road.length() == 0){
+            return 0;
+        }
+        return process(road.toCharArray(),0,new HashSet<>());
+    }
 
     /**
-     * 暴力方法，列出所有的可能性 todo 还没理解 需要重新构
+     * 暴力方法，列出所有的可能性
      * @param str 字符串
      * @param index 当前下标
      * @param lights 需要放入路灯的下标位置
@@ -25,10 +36,10 @@ public class Light {
      */
     public static int process(char[] str , int index, HashSet<Integer> lights ){
         //字符串走完的时候，我们去统计HashSet中所有所有的街灯
-        if(index == lights.size()){
+        if(index == lights.size()){ //这是结束的时候
             for (int i = 0; i < str.length; i++) {
-                if (str[i] != 'X'){
-                    if (!lights.contains( i -  1) && !lights.contains( i ) && !lights.contains( i + 1)){
+                if (str[i] != 'X'){//看当前这个“.”的卫视需要放灯
+                    if (!lights.contains( i -  1 ) && !lights.contains( i ) && !lights.contains( i + 1)){
                         return Integer.MAX_VALUE;
                     }
                 }
@@ -42,11 +53,12 @@ public class Light {
             if (str[index]  == '.'){//只有“.” 是可以放灯的
                 lights.add(index);
                 yes = process(str,index + 1,lights);
-                lights.remove(index);
+                lights.remove(index);//因为 使用了 老的 HashSet 所以要恢复现场 , 因为 每一次 回溯时候 都
             }
             return Math.min(yes,no);
         }
     }
+
 
     /**
      * 贪心算法解决实现

@@ -80,8 +80,8 @@ public class Beat_Arrange {
      */
    public static int processByComparator (Program[] programs){
        Arrays.sort(programs);//按照比较器进行排序
-       int timeLine = 0;
-       int done = 0 ;
+       int timeLine = 0;//这是当前时间
+       int done = 0 ;//这是完成时间
        for (int i = 0; i < programs.length; i++) {
            if (programs[i].start >= timeLine){
                timeLine = programs[i].end;
