@@ -40,8 +40,8 @@ public class Union_Set {
          * 每个节点的大小
          * 只有一个点，是这个集合的代表点，才会有记录
          * 什么叫“代表点”
-         * a
-         * /  |  \
+         *     a
+         *  /  |  \
          * b   c   e
          * 表示 素有4 条记录
          * |Key |Value|
@@ -51,8 +51,8 @@ public class Union_Set {
 
         /**
          * 存放代表点 如下
-         *    a
-         * /  |  \
+         *     a
+         *  /  |  \
          * b   c   e
          * 所以这个HashMap的存放结构如下把他扁平化，
          * |Key |Value|
@@ -94,14 +94,19 @@ public class Union_Set {
                 cur = parentMap.get(cur);
             }
             //当上面的while 走完以后 ，一定到当前点的代表点
-            //沿途的父节点 ，全部改成当前"达标点"
+            //沿途的父节点 ，全部改成当前"代表点"
             while (!path.isEmpty()) {
-
                 parentMap.put(path.pop(), cur);
             }
             return cur;
         }
 
+        /**
+         *
+         * @param a
+         * @param b
+         * @return
+         */
         public boolean isSameSet(V a, V b) {
             if (!nodes.containsKey(a) || !nodes.containsKey(b)) return false;
             //如果内存地址 说明是一个 一个 点
