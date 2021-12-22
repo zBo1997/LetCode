@@ -102,7 +102,7 @@ public class Union_Set {
         }
 
         /**
-         * 小的链子 去挂大的链子，小去挂大，减少便利链的高度
+         *
          * @param a
          * @param b
          * @return
@@ -115,7 +115,7 @@ public class Union_Set {
 
         /**
          * 合并
-         *
+         * 小的链子 去挂大的链子，小去挂大，减少便利链的高度
          * @param a
          * @param b
          */
