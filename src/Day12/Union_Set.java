@@ -30,7 +30,7 @@ public class Union_Set {
         }
     }
 
-    static class UnionSet<V> {
+    public static class UnionSet<V> {
         /**
          * 存放当前节点和包装成Node类型节点
          */
@@ -79,6 +79,7 @@ public class Union_Set {
             }
 
         }
+
 
         /**
          * 从cur 传入得节点开始一直寻找，直到找到代表点返回。
@@ -143,6 +144,14 @@ public class Union_Set {
 
             }
 
+        }
+
+        /**
+         * 返回并查集的数量
+         * @return
+         */
+        public int getSizeNum(){
+            return nodeSize.size();
         }
     }
 
