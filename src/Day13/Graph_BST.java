@@ -34,7 +34,7 @@ public class Graph_BST {
                 //为了防止出现环，只存放set中没有的节点 ，而下一次队列 只会弹出 没有直接邻居的节点
                 if (!nodeSet.contains(nextNode)) {
                     queue.add(nextNode);
-                    nodeSet.add(nextNode);
+                    nodeSet.add(nextNode);//继续放如到set 保证此节已经被使用过
                 }
             }
         }
@@ -64,7 +64,7 @@ public class Graph_BST {
                 if (!nodeSet.contains(nextNode)) {
                     nodeStack.push(cur);//再次放到栈内 给下次使用
                     nodeStack.push(nextNode);//再放入当前节点的后代
-                    nodeSet.add(nextNode);//翻入
+                    nodeSet.add(nextNode);//继续放如到set 保证此节已经被使用过
                     System.out.println(nextNode);
                     break;
                 }
