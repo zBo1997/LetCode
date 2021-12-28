@@ -9,6 +9,7 @@ import java.util.ArrayList;
  */
 public class Node {
 
+    //Node节点的值
     public int value;
 
     //入度
@@ -17,14 +18,14 @@ public class Node {
     //出度
     public int out;
 
-    public ArrayList<Node> next; //直接邻居
+    public ArrayList<Node> nexts; //直接邻居
     public ArrayList<Edge> edges; //边
 
     public Node(int value) {
         this.value = value;
         this.in = 0;
         this.out = 0;
-        this.next = new ArrayList<>();
+        this.nexts = new ArrayList<>();
         this.edges = new ArrayList<>();
     }
 }

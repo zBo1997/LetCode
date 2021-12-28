@@ -30,7 +30,7 @@ public class Graph_BST {
         while (!queue.isEmpty()) {
             Node curNode = queue.poll();
             System.out.println(curNode.value);//输出当前的节点
-            for (Node nextNode : curNode.next) {
+            for (Node nextNode : curNode.nexts) {
                 //为了防止出现环，只存放set中没有的节点 ，而下一次队列 只会弹出 没有直接邻居的节点
                 if (!nodeSet.contains(nextNode)) {
                     queue.add(nextNode);
@@ -60,7 +60,7 @@ public class Graph_BST {
         System.out.println(node);
         if (!nodeStack.isEmpty()) {
             Node cur = nodeStack.pop();
-            for (Node nextNode : cur.next) {
+            for (Node nextNode : cur.nexts) {
                 if (!nodeSet.contains(nextNode)) {
                     nodeStack.push(cur);//再次放到栈内 给下次使用
                     nodeStack.push(nextNode);//再放入当前节点的后代

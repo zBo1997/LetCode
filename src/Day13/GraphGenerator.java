@@ -32,7 +32,7 @@ public class GraphGenerator {
             Node fromNode = graph.nodes.get(from);
             Node toNode = graph.nodes.get(to);
             Edge edge = new Edge(weight, fromNode, toNode);
-            fromNode.next.add(toNode);//直接邻居添加toNode
+            fromNode.nexts.add(toNode);//直接邻居添加toNode
             fromNode.out++;//from的出度++
             toNode.in++;//to的入度++
             fromNode.edges.add(edge);//给当前的from节点天加“边”
