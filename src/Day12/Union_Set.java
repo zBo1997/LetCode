@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * 有若干样本a、b、c、d ....类型 假设都是V
+ * 有若干样本a、b、c、d ....类型 假设都是V 把他认为是一个单列表结构
  * 在 并查集中 一开始认为每个样本都在单独的集合中，
  * 用户 可以在任何时候调用如下  boolean isSameSet(V v ,Y y); 这个方法查看 是否属于统一样本
  * void union() ; 把 所载集合中的 素有样本合并成一个集合
@@ -89,7 +89,6 @@ public class Union_Set {
         public Node<V> findLastFather(Node<V> cur) {
             Stack<Node<V>> path = new Stack<>();
             //寻找当前点的“代表点” ，用于修改“parentMap” 进行 修改
-
             while (cur != parentMap.get(cur)) {
                 path.push(cur);//沿途的所有节点 ，全部记下来 后续扁平化要用
                 cur = parentMap.get(cur);
