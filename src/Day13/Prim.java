@@ -25,6 +25,10 @@ public class Prim {
         HashSet<Edge> edgeSet = new HashSet<>();
         HashSet<Node> result = new HashSet<>();
 
+        /**
+         * 这个循环是为防止什么 ？？？？ 好像没有什么必要
+         *
+         */
         for (Node node : graph.nodes.values()) {
             //初始化第一个解锁的点和边
             if (!nodeSet.contains(node)) {
@@ -52,7 +56,7 @@ public class Prim {
                     }
                 }
             }
-
+            break;
         }
         return result;
     }
