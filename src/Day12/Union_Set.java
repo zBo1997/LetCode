@@ -12,7 +12,7 @@ import java.util.Stack;
  * isSameSet 和 union 方法的时间和空间复杂的月底越好
  *
  * @Classname Union_Set
- * @Description 并差集 结构学习
+ * @Description 并查集 结构学习
  * @Date 2021/10/7 21:47
  * @Created by ZhuBo
  */
