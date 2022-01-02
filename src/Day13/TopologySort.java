@@ -34,6 +34,7 @@ public class TopologySort {
         while (!inIsZero.isEmpty()) {
             //弹出的顺序一定是已经做完的节点 并且 已经 没有入度
             Node cur = inIsZero.poll();
+            results.add(cur);//把当前入读为 0 的节点放入到结果集中
             for (Node next : cur.nexts) {
                 //把关于此时节点的所有节点“入度” - 1
                 inMap.put(next, inMap.get(next) - 1);

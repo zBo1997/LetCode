@@ -56,7 +56,7 @@ public class Prim {
                     }
                 }
             }
-            break;
+            break;//这个跳出循环是防止出现“森林”才去加的
         }
         return result;
     }
