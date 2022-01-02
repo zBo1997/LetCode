@@ -43,7 +43,7 @@ public class Dijkstra {
     }
 
     /**
-     * 获取最没有被解锁的做小节点
+     * 获取最没有被解锁的所有最小的节点 和 这个点到达下一个点的最小距离
      * @param distanceMap
      * @param selectedNodes
      * @return
