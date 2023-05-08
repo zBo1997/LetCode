@@ -27,6 +27,15 @@ public class BubbleSort {
         }
     }
 
+    /**
+     * 简单来说，我们只要知道a和b的差异(diff)，就可以用a和diff推算出b，也可以用b和diff推算出a...a^b=diff
+     * (a和b的差异是diff)a^diff=b
+     * (a和diff的差异是什么呢？当然是b啊)b^diff=a (b和diff的差异是什么呢？当然是a啊)
+     *
+     * @param arr
+     * @param j
+     * @param i
+     */
     public static void swap(int[] arr, int j, int i) {
         arr[i] = arr[i] ^ arr[j];
         arr[j] = arr[i] ^ arr[j];

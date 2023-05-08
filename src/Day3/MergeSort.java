@@ -50,7 +50,7 @@ public class MergeSort {
         }
         //把每一个归并好的数据放入到一一放入原数组
         for (int j = 0; j < help.length; j++) {
-            arr[l++] = help[j];
+                arr[l++] = help[j];
         }
 
     }
