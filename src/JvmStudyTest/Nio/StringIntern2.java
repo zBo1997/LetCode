@@ -1,9 +1,6 @@
 package JvmStudyTest.Nio;
 
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class StringIntern2 {
 
   /**
@@ -24,5 +21,6 @@ public class StringIntern2 {
       //JDK8 以后设置”首次遇到原则“
       System.out.println(str3.intern() == str3);
 
+      TestCalzzInit a = new TestSubCalzzInit();
     }
 }

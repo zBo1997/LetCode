@@ -1,4 +1,4 @@
-package SystudyTest.cglibTest;
+package SystudyTest.cglib_test;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
