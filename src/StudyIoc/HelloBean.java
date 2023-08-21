@@ -10,7 +10,8 @@ public class HelloBean {
     public void showMessage() {
         System.out.println("Hello from HelloBean!");
         if (user != null) {
-            System.out.println("User: " + user.getName() + ", Gender: " + user.getGender() + ",Object HashCode：" + user.hashCode());
+            System.out.println("User: " + user.getName() + ", Gender: " + user.getGender() + ",Object User HashCode：" + user.hashCode());
         }
+        System.out.println("Object HashCode：" + this.hashCode());
     }
 }
