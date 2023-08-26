@@ -9,16 +9,17 @@ public class MainApp {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         ConfigurableListableBeanFactory beanFactory = context.getBeanFactory();
         beanFactory.registerScope(ThreadScope.THREAD_SCOPE, new ThreadScope());
-
-        for (int i = 0; i < 2; i++) {
-            new Thread(() -> {
-                // 获取定义的 Bean
-                HelloBean helloBean1 = (HelloBean) context.getBean("helloBean");
-                HelloBean helloBean2 = (HelloBean) context.getBean("helloBean");
-
-                // 使用 Bean
-                helloBean1.showMessage();
-            }).start();
-        }
+        HelloBean helloBean1 = (HelloBean) context.getBean("helloBean");
+        helloBean1.showMessage();
+//        for (int i = 0; i < 2; i++) {
+//            new Thread(() -> {
+//                // 获取定义的 Bean
+//                HelloBean helloBean1 = (HelloBean) context.getBean("helloBean");
+//                HelloBean helloBean2 = (HelloBean) context.getBean("helloBean");
+//
+//                // 使用 Bean
+//                helloBean1.showMessage();
+//            }).start();
+//        }
     }
 }

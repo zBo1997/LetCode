@@ -3,15 +3,16 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <!-- 定义 HelloBean Bean，注入 User 对象 -->
+    <bean id="helloBean" class="StudyIoc.HelloBean" scope="prototype">
+        <property name="user" ref="user" />
+    </bean>
+
     <!-- 定义 User Bean -->
     <bean id="user" class="StudyIoc.User">
         <property name="name" value="Alice" />
         <property name="gender" value="Female" />
     </bean>
 
-    <!-- 定义 HelloBean Bean，注入 User 对象 -->
-    <bean id="helloBean" class="StudyIoc.HelloBean" scope="thread">
-        <property name="user" ref="user" />
-    </bean>
 
 </beans>
