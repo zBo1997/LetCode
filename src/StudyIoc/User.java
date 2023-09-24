@@ -1,5 +1,8 @@
 package StudyIoc;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public class User {
     private String name;
     private String gender;
