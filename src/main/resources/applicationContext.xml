@@ -1,7 +1,7 @@
 <!-- applicationContext.xml -->
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 定义 HelloBean Bean，注入 User 对象 -->
     <bean id="helloBean" class="StudyIoc.HelloBean" scope="prototype">
@@ -13,6 +13,8 @@
         <property name="name" value="Alice" />
         <property name="gender" value="Female" />
     </bean>
+
+    <context:component-scan base-package="SystudyTest.statemachine"> </context:component-scan>
 
 
 </beans>
