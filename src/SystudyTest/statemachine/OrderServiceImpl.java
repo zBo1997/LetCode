@@ -98,6 +98,8 @@ public class OrderServiceImpl {
             log.error("订单操作失败:{}", e);
         } finally {
             orderStateMachine.stop();
+
+
         }
         return result;
     }

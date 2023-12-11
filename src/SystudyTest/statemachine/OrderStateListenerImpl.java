@@ -6,10 +6,11 @@ import org.springframework.messaging.Message;
 import org.springframework.statemachine.annotation.OnTransition;
 import org.springframework.statemachine.annotation.WithStateMachine;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  */     
-    @Component ("orderStateListener")
+    @Component ("wborderStateListener")
     @WithStateMachine (name = "orderStateMachine")
     @Slf4j
     public class OrderStateListenerImpl {
@@ -24,6 +25,7 @@ import org.springframework.stereotype.Component;
             //TODO 其他业务
         }
         @OnTransition(source = "WAIT_DELIVER", target = "WAIT_RECEIVE")
+        @Transactional
         public void deliverTransition(Message<OrderStatusChangeEvent> message) {
             Order order = (Order) message.getHeaders().get("order");
             log.info("发货，状态机反馈信息：{}",  message.getHeaders().toString());
