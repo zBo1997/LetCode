@@ -29,6 +29,7 @@ public class Main {
         QwenParam param = QwenParam.builder().model(Generation.Models.QWEN_TURBO).messages(msgManager.get())
                         .resultFormat(QwenParam.ResultFormat.MESSAGE)
                         .topP(0.8)
+            .apiKey("sk-c416a256bf9340dcb2362c46a9998ff7")
                         .enableSearch(true)
                         .build();
         GenerationResult result = gen.call(param);
