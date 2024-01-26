@@ -1,4 +1,4 @@
-package xin.spring.java.processor;
+package Lombok;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,11 +8,5 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.SOURCE)
 public @interface Getter {
-}
-
-
-@Target({ElementType.TYPE})
-@Retention(RetentionPolicy.SOURCE)
-public @interface Setter {
 
 }
