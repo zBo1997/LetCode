@@ -6,7 +6,7 @@ import java.util.Scanner;
 //在一长方形停车场内，每个车位上方都有对应监控器，
 // 当且仅当在当前车位或者前后左右四个方向任意一个车位范围停车时，监控器才需要打开，
 // 给出某一时刻停车场的停车分布，请统计最少需要打开多少个监控器。
-public class Main {
+public class TVCount {
 
     //输入的行数 和  输入的列数
     static int rowCount, colCount; // 行数和列数
