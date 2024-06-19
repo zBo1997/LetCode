@@ -1,11 +1,5 @@
 package Day15;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  *
  */
@@ -20,7 +14,7 @@ public class RemoveDupArray {
     }
 
     /**
-     * 原地移除数组中重复数字 出现一次
+     * 原地移除数组中重复数字 出现一次 双指针
      *
      * @param array
      * @return
@@ -40,15 +34,24 @@ public class RemoveDupArray {
     }
 
     /**
-     * 变种原地移除数组中重复数字 出现两次
+     * 变种原地移除数组中重复数字 出现两次【快慢指针实现】
      *
      * @param array
      * @return
      */
     public static int removeTwice(int[] array) {
-        for (int i = 0; i < array.length; i++) {
 
+        int p = 2;
+        int q = 2;
+
+        //和上面思路一样，如果没有到数组末尾，一直向后推移
+        while (q < array.length){
+            if (array[p - 2] != array[q]){
+                array[p] = array[q];
+                p ++;
+            }
+            q++;
         }
-        return 0;
+        return p;
     }
 }
