@@ -1,4 +1,4 @@
-package future;
+package SystudyTest.completableFuture;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
