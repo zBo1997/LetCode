@@ -34,7 +34,7 @@ public class ClientTest {
                         // 添加字符串编码器
                         pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
                         // 添加心跳检测
-                        pipeline.addLast(new IdleStateHandler(0, 10, 0));
+                        pipeline.addLast(new IdleStateHandler(10, 10, 0));
                         // 添加客户端自定义的空闲状态处理器
                         pipeline.addLast(new ClientIdleEventHandler());
                     }

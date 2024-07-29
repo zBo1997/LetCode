@@ -18,6 +18,7 @@ import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.CharsetUtil;
 import io.netty.channel.ChannelHandler.Sharable;
+
 import static io.netty.channel.ChannelFutureListener.FIRE_EXCEPTION_ON_FAILURE;
 
 /**
@@ -30,32 +31,30 @@ public class ServerTest {
         EventLoopGroup group = new NioEventLoopGroup();
         EventLoopGroup work = new NioEventLoopGroup();
         ServerBootstrap serverBootstrap = new ServerBootstrap();
-        serverBootstrap.group(group, work)
-                .channel(NioServerSocketChannel.class)
-                .childHandler(new ChannelInitializer<SocketChannel>() {
+        serverBootstrap.group(group, work).channel(NioServerSocketChannel.class)
+            .option(ChannelOption.SO_BACKLOG, 128).option(ChannelOption.SO_REUSEADDR, true)
+            .childHandler(new ChannelInitializer<SocketChannel>() {
 
-                    /**
-                     * 实现自定义初始化的Channel的逻辑
-                     */
-                    @Override
-                    protected void initChannel(SocketChannel ch) throws Exception {
-                        ChannelPipeline pipeline = ch.pipeline();
+                /**
+                 * 实现自定义初始化的Channel的逻辑
+                 */
+                @Override
+                protected void initChannel(SocketChannel ch) throws Exception {
+                    ChannelPipeline pipeline = ch.pipeline();
 
-                        // 添加字符串解码器和编码器
-                        pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
-                        pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
+                    // 添加字符串解码器和编码器
+                    pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
+                    pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
 
-                        // 心跳检测
-                        pipeline.addFirst("idleStateHandler",
-                                new IdleStateHandler(20, 0, 0));
-                        // 超过心跳的处理
-                        pipeline.addAfter("idleStateHandler",
-                                "idleEventHandler", new IdleTimeoutHandler());
-                    }
+                    // 心跳检测
+                    pipeline.addFirst("idleStateHandler", new IdleStateHandler(10, 0, 0));
+                    // 超过心跳的处理
+                    pipeline.addAfter("idleStateHandler", "idleEventHandler", new IdleTimeoutHandler());
+                }
 
-                })
-                // 设置保持长链接
-                .childOption(ChannelOption.SO_KEEPALIVE, true);
+            })
+            // 设置channel的参数
+            .childOption(ChannelOption.SO_KEEPALIVE, true).childOption(ChannelOption.TCP_NODELAY, true);
         ChannelFuture bind = serverBootstrap.bind("127.0.0.1", 8080);
         try {
             // 等待服务端监听端口关闭
@@ -77,7 +76,7 @@ class IdleTimeoutHandler extends ChannelDuplexHandler {
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
         if (evt instanceof IdleStateEvent) {
-            IdleState e = ((IdleStateEvent) evt).state();
+            IdleState e = ((IdleStateEvent)evt).state();
             // IdleState.READER_IDLE：表示在指定的时间间隔内没有读取到任何数据。
             // IdleState.WRITER_IDLE：表示在指定的时间间隔内没有写入任何数据。
             // IdleState.ALL_IDLE：表示在指定的时间间隔内既没有读取到任何数据，也没有写入任何数据。
