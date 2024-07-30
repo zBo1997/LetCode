@@ -47,7 +47,7 @@ public class ServerTest {
                     pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
 
                     // 心跳检测
-                    pipeline.addFirst("idleStateHandler", new IdleStateHandler(10, 0, 0));
+                    pipeline.addFirst("idleStateHandler", new IdleStateHandler(0, 10, 0));
                     // 超过心跳的处理
                     pipeline.addAfter("idleStateHandler", "idleEventHandler", new IdleTimeoutHandler());
                 }
@@ -72,6 +72,12 @@ public class ServerTest {
  */
 @Sharable
 class IdleTimeoutHandler extends ChannelDuplexHandler {
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("连接被激活");
+        super.channelActive(ctx);
+    }
 
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
