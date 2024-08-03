@@ -1,15 +1,17 @@
 package SystudyTest.netty;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.*;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.ChannelPipeline;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.string.StringEncoder;
-import io.netty.handler.timeout.IdleState;
-import io.netty.handler.timeout.IdleStateEvent;
-import io.netty.handler.timeout.IdleStateHandler;
-import io.netty.util.CharsetUtil;
+import io.netty.handler.codec.MessageToByteEncoder;
 
 public class ClientTest {
 
@@ -31,50 +33,39 @@ public class ClientTest {
                     @Override
                     protected void initChannel(SocketChannel ch) {
                         ChannelPipeline pipeline = ch.pipeline();
-                        // 添加字符串编码器
-                        pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
-                        // 添加心跳检测
-                        pipeline.addLast(new IdleStateHandler(10, 10, 0));
-                        // 添加客户端自定义的空闲状态处理器
-                        pipeline.addLast(new ClientIdleEventHandler());
+                        pipeline.addLast(new CustomChannelOutBoundHandler());
                     }
                 });
 
         // 启动客户端连接操作
         ChannelFuture f = bootstrap.connect(host, port).sync();
         System.out.println("客户端连接成功，连接地址：" + f.channel().remoteAddress());
-
-        // 发送消息
-        f.channel().writeAndFlush("Hello Server!");
-
-        // 等待直到客户端关闭
-        f.channel().closeFuture().await();
-    }
-}
-
-/**
- * 客户端空闲状态处理器
- */
-class ClientIdleEventHandler extends ChannelInboundHandlerAdapter {
-    @Override
-    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        if (evt instanceof IdleStateEvent) {
-            IdleState state = ((IdleStateEvent) evt).state();
-            if (state == IdleState.WRITER_IDLE) {
-                System.out.println("发送心跳...");
-                // 如果规定的时间间隔内没有写入任何数据，就发送心跳
-                ctx.writeAndFlush("心跳消息");
-            }
-        }
-        super.userEventTriggered(ctx, evt);
+        f.channel().writeAndFlush(Long.valueOf(10));
     }
 
     public static void main(String[] args) {
+        ClientTest client = new ClientTest("127.0.0.1", 8080);
         try {
-            new ClientTest("127.0.0.1", 8080).run();
+            client.run();
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+}
+
+class CustomChannelOutBoundHandler extends MessageToByteEncoder<Long> {
+
+    /**
+     *
+     * @param ctx 上下文对象
+     * @param msg 等待编码的数据
+     * @param out 编码后的数据为二进制字节流格式，都存储到out中交给Netty，netty负责把ByteBuf数据交给socket缓冲区
+     *            socket缓冲区会把数据交给网络IO通信发给服务端
+     * @throws Exception
+     */
+    @Override
+    protected void encode(ChannelHandlerContext ctx, Long msg, ByteBuf out) throws Exception {
+        System.out.println("编码器发送数据");
+        out.writeLong(msg);
     }
 }
