@@ -12,7 +12,6 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.ChannelPipeline;
-import io.netty.channel.DefaultEventLoopGroup;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
@@ -29,7 +28,6 @@ public class ServerTest {
         EventLoopGroup group = new NioEventLoopGroup();
         EventLoopGroup work = new NioEventLoopGroup();
         ServerBootstrap serverBootstrap = new ServerBootstrap();
-        DefaultEventLoopGroup defaultEventLoopGroup = new DefaultEventLoopGroup();
         serverBootstrap.group(group, work).channel(NioServerSocketChannel.class)
                 .option(ChannelOption.SO_BACKLOG, 128).option(ChannelOption.SO_REUSEADDR, true)
                 .childHandler(new ChannelInitializer<SocketChannel>() {
