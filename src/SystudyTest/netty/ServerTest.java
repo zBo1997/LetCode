@@ -53,7 +53,7 @@ public class ServerTest {
                     }
                 })
                 // 设置channel的参数
-                .childOption(ChannelOption.SO_KEEPALIVE, true).childOption(ChannelOption.TCP_NODELAY, false);
+                .childOption(ChannelOption.SO_KEEPALIVE, true).childOption(ChannelOption.TCP_NODELAY, true);
         ChannelFuture bind = serverBootstrap.bind("127.0.0.1", 8080);
         try {
             // 等待服务端监听端口关闭

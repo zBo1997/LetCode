@@ -40,12 +40,7 @@ public class ClientTest {
         // 启动客户端连接操作
         ChannelFuture f = bootstrap.connect(host, port).sync();
         System.out.println("客户端连接成功，连接地址：" + f.channel().remoteAddress());
-        // 发送10个数据
-        int i = 0;
-        while (i < 5) {
-            i++;
-            f.channel().writeAndFlush(Long.valueOf(10000L));
-        }
+        f.channel().writeAndFlush(Long.valueOf(10));
     }
 
     public static void main(String[] args) {
