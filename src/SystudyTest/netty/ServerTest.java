@@ -45,7 +45,9 @@ public class ServerTest {
                     // 添加字符串解码器和编码器
                     pipeline.addLast(new StringDecoder(CharsetUtil.UTF_8));
                     pipeline.addLast(new StringEncoder(CharsetUtil.UTF_8));
-
+                    // `readerIdleTimeSeconds` | 读超时。即当在指定的时间间隔内没有从`Channel`读取到数据时，会触发一个`READER_IDLE`的`IdleStateEvent`事件 |
+                    // `writerIdleTimeSeconds` | 写超时。即当在指定的时间间隔内没有数据写入到`Channel`时，会触发一个`WRITER_IDLE`的`IdleStateEvent`事件 |
+                    // `allIdleTimeSeconds` | 读/写超时。即当在指定的时间间隔内没有读或写操作时，会触发一个`ALL_IDLE`的`IdleStateEvent`事件 |
                     // 心跳检测
                     pipeline.addFirst("idleStateHandler", new IdleStateHandler(0, 10, 0));
                     // 超过心跳的处理

@@ -129,6 +129,13 @@
             <version>4.1.69.Final</version> <!-- 请使用最新的稳定版本 -->
         </dependency>
 
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+            <version>3.9.4</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
