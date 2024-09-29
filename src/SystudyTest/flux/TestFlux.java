@@ -23,6 +23,7 @@ public class TestFlux {
             for (String string : list) {
                 sink.next(new Context(string, 0));
             }
+            //阻塞，等sink处理完毕
             sink.complete();
         });
     }
